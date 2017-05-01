@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('here', this.state);
     return (
       <div>
         <SearchBar onSearchClicked={this.onSearchClicked} />
@@ -39,6 +38,5 @@ class App extends Component {
       });
   }
 }
-
 
 ReactDOM.render(<App />, document.querySelector('.container'));

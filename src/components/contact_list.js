@@ -3,7 +3,7 @@ import ContactItem from './contact_item';
 
 const ContactList = ({searchResults}) => {
   if (searchResults === null) {
-    return <div>aaa</div>;
+    return <div></div>;
   }
 
   const contactItems = searchResults.map(contact => {
@@ -14,18 +14,6 @@ const ContactList = ({searchResults}) => {
     );
   });
 
-  return (
-    <ul className="list-group col-md-8">
-      {contactItems}
-    </ul>
-  );
-
-}
-
-export default ContactList;
-
-/*
-
   if (searchResults.length === 0) {
     return (
       <div className="alert alert-info col-md-8" role="alert">
@@ -33,5 +21,12 @@ export default ContactList;
       </div>
     );
   } else {
+    return (
+      <ul className="list-group col-md-8">
+        {contactItems}
+      </ul>
+    );
+  }
+}
 
-  }*/
+export default ContactList;

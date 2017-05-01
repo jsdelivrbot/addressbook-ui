@@ -10,6 +10,8 @@ class SearchBar extends React.Component {
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.searchClicked = this.searchClicked.bind(this);
+    this.onKeyPressed = this.onKeyPressed.bind(this);
   }
 
   render() {
@@ -26,11 +28,12 @@ class SearchBar extends React.Component {
             <input
               className="form-control"
               type="text"
+              onKeyPress={this.onKeyPressed}
               onChange={this.onInputChange}
               value={this.state.searchValue} />
             <span className="input-group-btn">
               <button
-                onClick={() => this.searchClicked()}
+                onClick={this.searchClicked}
                 className={searchButtonClass}
                 type="button">Search</button>
             </span>
@@ -43,15 +46,19 @@ class SearchBar extends React.Component {
     );
   }
 
+  onKeyPressed(event) {
+    if (event.key === 'Enter' && this.state.searchValue.length >= 3) {
+      this.searchClicked();
+    }
+  }
+
   onInputChange(event) {
-    console.log('value changed to ', event.target.value);
     this.setState({searchValue: event.target.value});
   }
 
   searchClicked() {
-    console.log('clicked search');
     this.props.onSearchClicked(this.state.searchValue);
-    //this.setState({searchValue: ''});
+    this.setState({searchValue: ''});
   }
 }
 
